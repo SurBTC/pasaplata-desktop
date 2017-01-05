@@ -10,7 +10,7 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "remittance-maker-v2-0-1": "https://raw.githubusercontent.com/dinexcode/assets/master/remittance-maker-v2-0-1.js"
+    "remittance-maker": "^2.0.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

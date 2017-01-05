@@ -69,6 +69,8 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
+    <!-- trick to load modules (http://stackoverflow.com/questions/32621988/electron-jquery-is-not-defined) -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -81,14 +83,16 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/remittance-maker-v2-0-1/index.js"></script>
+    <script src="bower_components/remittance-maker/dist/index.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <!-- endbuild -->
+    <!-- trick to load modules (http://stackoverflow.com/questions/32621988/electron-jquery-is-not-defined) -->
+    <script>if (window.module) module = window.module;</script>
 </body>
 </html>
