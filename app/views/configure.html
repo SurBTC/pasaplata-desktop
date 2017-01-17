@@ -1,0 +1,56 @@
+<form role="form" name="configureForm" ng-submit="setOptions()">
+  <div class="panel panel-default">
+    <div class="panel-heading">Configuración requerida</div>
+    <div class="panel-body">
+      <div class="input-group">
+        <span class="input-group-addon">Key</span>
+        <input name="apiKey" type="text" class="form-control" ng-model="makerOptions.apiKey" placeholder="Api Key de tu cuenta SURBTC" autofocus required focus-next="apiSecret">
+      </div>
+      <div class="input-group has-error" on-error="apiKey:required:Debes completar este campo"></div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">Secret</span>
+        <input name="apiSecret" id="apiSecret" type="text" class="form-control" ng-model="makerOptions.apiSecret" placeholder="Api Secret de tu cuenta SURBTC" required>
+      </div>
+      <div class="input-group has-error" on-error="apiSecret:required:Debes completar este campo"></div>
+      <br>
+      <div>
+        <a ng-click="advanced = !advanced">Ver más</a>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default" ng-show="advanced">
+    <div class="panel-heading">Configuración avanzada</div>
+    <div class="panel-body">
+      <div class="input-group">
+        <span class="input-group-addon">Comisión</span>
+        <input name="processorFee" id="processorFee" type="number" step="any" class="form-control" ng-model="makerOptions.processorFee">
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">Seguro BTC</span>
+        <input name="btcInsurance" id="btcInsurance" type="number" step="any" class="form-control" ng-model="makerOptions.btcInsurance">
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">Costo recaudación</span>
+        <input name="sourceCurrencyDepositFee" id="sourceCurrencyDepositFee" type="number" step="any" class="form-control" ng-model="makerOptions.sourceCurrencyDepositFee">
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">Costo retiro variable</span>
+        <input name="destinationCurrencyWithdrawalFee" id="destinationCurrencyWithdrawalFee" type="number" step="any" class="form-control" ng-model="makerOptions.destinationCurrencyWithdrawalFee">
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">Costo retiro fijo</span>
+        <input name="destinationCurrencyWithdrawalFixedFee" id="destinationCurrencyWithdrawalFixedFee" type="number" step="any" class="form-control" ng-model="makerOptions.destinationCurrencyWithdrawalFixedFee">
+      </div>
+      <br>
+    </div>
+  </div>
+  <div>
+    <button id="confirm" type="submit" class="btn btn-primary" ng-disabled="configureForm.$invalid">Confirmar</button>
+  </div>
+  <br>
+</form>
