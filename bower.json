@@ -10,7 +10,6 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "remittance-maker": "^2.0.2",
     "a0-angular-storage": "^0.0.15"
   },
   "devDependencies": {

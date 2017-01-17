@@ -29,7 +29,6 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
-      'bower_components/remittance-maker/dist/index.min.js',
       'bower_components/a0-angular-storage/dist/angular-storage.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

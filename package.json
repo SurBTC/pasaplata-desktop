@@ -32,5 +32,8 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "remittance-maker": "git+https://github.com/jaime-ez/remittance-maker.git"
   }
 }
