@@ -12,7 +12,6 @@ angular.module('pasaplataMakerApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     this.doIt = function() {
-      $rootScope.processing = true;
       async.series({
         clp: function(cb) {
           $rootScope.restClient.getBalances('clp', function(err, balance){
@@ -43,16 +42,12 @@ angular.module('pasaplataMakerApp')
         }
       }, function(err, result) {
         if (err) {
-          $rootScope.processing = false;
-          $rootScope.error.status = true;
-          $rootScope.error.message = err;
-          console.log(err);
+          $rootScope.$broadcast('getBalances', err);
         } else {
-          $rootScope.processing = false;
-          $rootScope.balances.clp = result.clp.balance.available_amount / 100
-          $rootScope.balances.cop = result.cop.balance.available_amount / 100
-          $rootScope.balances.btc = result.btc.balance.available_amount
-          console.log($rootScope.balances);
+          result.clp = result.clp.balance.available_amount / 100
+          result.cop = result.cop.balance.available_amount / 100
+          result.btc = result.btc.balance.available_amount
+          $rootScope.$broadcast('getBalances', result)
         }
       })
     }
