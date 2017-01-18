@@ -34,6 +34,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "remittance-maker": "git+https://github.com/jaime-ez/remittance-maker.git"
   }
 }
