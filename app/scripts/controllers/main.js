@@ -11,7 +11,7 @@ angular.module('pasaplataMakerApp')
   .controller('MainCtrl', function ($rootScope, $scope, $location, store, getBalances, SURBTC_REST_CLIENT, REMITTANCE_MAKER, _) {
     // make lodash available for templates
     $scope._ = _;
-    console.log('a');
+    
     // reset function
     $scope.reset = function () {
       $scope.configure = false;
