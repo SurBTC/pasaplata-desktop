@@ -3,7 +3,9 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-// live reload for dev purposes
+
+// check if running on dev
+const electronIsDev = require('electron-is-dev')
 const elemon = require('elemon')
 
 const path = require('path')
@@ -24,8 +26,10 @@ function createWindow () {
     slashes: true
   }))
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  if (electronIsDev) {
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools()
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -41,16 +45,18 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createWindow()
-  // elemon script to live reload app
-  let appOpts = {
-    app: app,
-    res: 'main.js'
+  if (electronIsDev) {
+    // elemon script to live reload app
+    let appOpts = {
+      app: app,
+      res: 'main.js'
+    }
+    let winOpts = [{
+      bw: mainWindow,
+      res: '*'
+    }]
+    elemon(appOpts, winOpts)
   }
-  let winOpts = [{
-    bw: mainWindow,
-    res: '*'
-  }]
-  elemon(appOpts, winOpts)
 })
 
 // Quit when all windows are closed.
