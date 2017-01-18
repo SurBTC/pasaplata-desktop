@@ -1,23 +1,69 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div ng-show="loading" class="text-center">
+  Un momento por favor...
 </div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div ng-hide="loading">
+  <form role="form" name="quoteForm" ng-submit="quote()" ng-show="!quotationStatus">
+    <div class="panel panel-default">
+      <div class="panel-heading">Cotización</div>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon">CLP</span>
+          <input name="sourceAmount" id="sourceAmount" type="number" class="form-control" ng-model="sourceAmount" placeholder="Monto a enviar" autofocus required max-value="balances.clp">
+        </div>
+        <div class="input-group has-error" on-error="sourceAmount:required:Debes completar este campo"></div>
+        <div class="input-group has-error" on-error="sourceAmount:maxValue:Valor debe ser menor al balance disponible:I"></div>
+        <br>
+      </div>
+    </div>
+    <div>
+      <button id="confirm" type="submit" class="btn btn-primary" ng-disabled="quoteForm.$invalid">Confirmar</button>
+    </div>
+    <br>
+  </form>
+  <div ng-show="quotationStatus === 'pending'">
+    Procesando...
+  </div>
+  <div ng-show="quotationStatus === 'received'">
+    <div>
+      <div class="panel panel-default" id="quotationResponse">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Detalle cotización</div>
+          <ul class="list-group">
+          <li class="list-group-item">Monto a Enviar <span class="details">{{quotation.sourceAmountToBeDeposited | currency:"CLP $":0}}</span></li>
+          <li class="list-group-item">Tasa de Cambio <span class="details">COP/CLP {{_.round(quotation.marketExchangeRate, 5)}}</span></li>
+          <li class="list-group-item" ng-show="quotation.processorFeeTotalAmount != 0">Comisión <span class="details">{{quotation.processorFeeTotalAmount | currency:"CLP $":0}}</span></li>
+          <li class="list-group-item result">Monto a recibir <span class="details">{{quotation.destinationAmountToBeReceived | currency:"COP $":0}}</span>
+            <br>
+            <span class="disclaimer">Incluye costos transf. en Colombia</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <button class="btn btn-default pull-left" ng-click="resetQuote()">Nueva cotización</button>
+        <button id="confirm" type="submit" class="btn btn-primary pull-right" ng-click="executeQuote()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+  <div ng-show="quotationStatus === 'accepted'">
+    Ejecutando...
+  </div>
+  <div ng-show="quotationStatus === 'executed'">
+    <div class="panel panel-default" id="quotationExecuted">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Remesa ejecutada</div>
+        <ul class="list-group">
+        <li class="list-group-item">Monto enviado <span class="details">{{remittance.amountClp | currency:"CLP $":0}}</span></li>
+        <li class="list-group-item">Monto Recibido <span class="details">{{remittance.amountCop | currency:"COP $":0}}</span></li>
+        <li class="list-group-item">Margen <span class="details">{{remittance.marginClp | currency:"CLP $":0}}</span></li>
+        <li class="list-group-item result">Margen <span class="details">{{remittance.marginCop | currency:"COP $":0}}</span>
+        <li class="list-group-item result">Monto a retirar <span class="details">{{remittance.destinationAmountNoFees | currency:"COP $":0}}</span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button class="btn btn-default pull-left" ng-click="resetQuote()">Finalizado</button>
+    </div>
+  </div>
+  <br>
+  <br>
 </div>
