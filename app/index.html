@@ -46,9 +46,9 @@
         </div>
       </div>
       <ul class="list-inline text-center">
-        <li><span class="label label-info">Saldo CLP</span> {{balances.clp}}</li>
-        <li><span class="label label-info">Saldo COP</span> {{balances.cop}}</li>
-        <li><span class="label label-info">Saldo BTC</span> {{balances.btc}}</li>
+        <li><span class="label label-info">Saldo CLP</span> {{balances.clp | currency:"CLP $":0}}</li>
+        <li><span class="label label-info">Saldo COP</span> {{balances.cop | currency:"COP $":2}}</li>
+        <li><span class="label label-info">Saldo BTC</span> {{balances.btc | currency:"BTC $":5}}</li>
       </ul>
     </div>
 
