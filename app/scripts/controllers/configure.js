@@ -36,4 +36,8 @@ angular.module('pasaplataMakerApp')
         window.alert('Ingrese un api key y api secret');
       }
     };
+
+    $scope.goBack = function () {
+      $location.path('/')
+    };    
   });
