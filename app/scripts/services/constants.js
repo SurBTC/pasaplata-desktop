@@ -3,6 +3,7 @@ const remittanceMaker = require('remittance-maker');
 const surBtcRestClient = require('surbtc-rest-client');
 const async = require('async');
 const _ = require('lodash');
+const bitcoinMath = require('bitcoin-math');
 
 /**
  * @ngdoc service
@@ -15,4 +16,5 @@ angular.module('pasaplataMakerApp')
   .constant('_', _)
   .constant('REMITTANCE_MAKER', remittanceMaker)
   .constant('SURBTC_REST_CLIENT', surBtcRestClient)
-  .constant('ASYNC', async);
+  .constant('ASYNC', async)
+  .constant('BITCOIN_MATH', bitcoinMath);

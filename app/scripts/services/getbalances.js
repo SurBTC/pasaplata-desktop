@@ -8,7 +8,7 @@
  * Service in the pasaplataMakerApp.
  */
 angular.module('pasaplataMakerApp')
-  .service('getBalances', function ($rootScope, ASYNC) {
+  .service('getBalances', function ($rootScope, ASYNC, BITCOIN_MATH) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     this.doIt = function() {
@@ -44,9 +44,9 @@ angular.module('pasaplataMakerApp')
         if (err) {
           $rootScope.$broadcast('getBalances', err);
         } else {
-          result.clp = result.clp.balance.available_amount / 100
-          result.cop = result.cop.balance.available_amount / 100
-          result.btc = result.btc.balance.available_amount
+          result.clp = result.clp.balance.available_amount / 100;
+          result.cop = result.cop.balance.available_amount / 100;
+          result.btc = result.btc.balance.available_amount.toBitcoin();
           $rootScope.$broadcast('getBalances', result)
         }
       })
