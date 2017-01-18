@@ -24,10 +24,10 @@ angular.module('pasaplataMakerApp')
       scope.$on('getBalances', function(event, args) {
         scope.$apply(function() {
           if (!_.isNumber(attr.maxValue)) {
-            attr.maxValue = args[attr.maxValue.split('.')[1]]
+            attr.maxValue = args[attr.maxValue.split('.')[1]];
           }
-        })
-      })
+        });
+      });
 
       var validator = function(value) {
         var valueAsNumber = value ? _.toNumber(value.replace(/[a-zA-Z!\?>:;,\$\|<@#%\^&\*\)\(\+\/\\={}\[\]_]/g, '')) : 0;

@@ -23,7 +23,7 @@ angular.module('pasaplataMakerApp')
 
     $scope.setOptions = function () {
       if ($scope.makerOptions.apiKey && $scope.makerOptions.apiSecret) {
-        store.set('apiUrl', $scope.makerOptions.apiUrl)
+        store.set('apiUrl', $scope.makerOptions.apiUrl);
         store.set('apiKey', $scope.makerOptions.apiKey);
         store.set('apiSecret', $scope.makerOptions.apiSecret);
         store.set('processorFee', $scope.makerOptions.processorFee);
@@ -38,6 +38,6 @@ angular.module('pasaplataMakerApp')
     };
 
     $scope.goBack = function () {
-      $location.path('/')
-    };    
+      $location.path('/');
+    };
   });

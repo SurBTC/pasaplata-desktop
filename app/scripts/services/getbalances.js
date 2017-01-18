@@ -18,27 +18,27 @@ angular.module('pasaplataMakerApp')
             if (err) {
               cb(err, null);
             } else {
-              cb(null,balance)
+              cb(null,balance);
             }
-          })
+          });
         },
         cop: function(cb) {
           $rootScope.restClient.getBalances('cop', function(err, balance){
             if (err) {
               cb(err, null);
             } else {
-              cb(null,balance)
+              cb(null,balance);
             }
-          })
+          });
         },
         btc: function(cb) {
           $rootScope.restClient.getBalances('btc', function(err, balance){
             if (err) {
               cb(err, null);
             } else {
-              cb(null,balance)
+              cb(null,balance);
             }
-          })
+          });
         }
       }, function(err, result) {
         if (err) {
@@ -47,8 +47,8 @@ angular.module('pasaplataMakerApp')
           result.clp = result.clp.balance.available_amount / 100;
           result.cop = result.cop.balance.available_amount / 100;
           result.btc = result.btc.balance.available_amount.toBitcoin();
-          $rootScope.$broadcast('getBalances', result)
+          $rootScope.$broadcast('getBalances', result);
         }
-      })
-    }
+      });
+    };
   });
