@@ -35,6 +35,11 @@ angular
         controller: 'ConfigureCtrl',
         controllerAs: 'configure'
       })
+      .when('/history', {
+        templateUrl: 'views/history.html',
+        controller: 'HistoryCtrl',
+        controllerAs: 'history'
+      })
       .otherwise({
         redirectTo: '/'
       });
