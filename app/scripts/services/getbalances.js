@@ -8,11 +8,11 @@
  * Service in the pasaplataMakerApp.
  */
 angular.module('pasaplataMakerApp')
-  .service('getBalances', function ($rootScope) {
+  .service('getBalances', function ($rootScope, ASYNC) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     this.doIt = function() {
-      async.series({
+      ASYNC.series({
         clp: function(cb) {
           $rootScope.restClient.getBalances('clp', function(err, balance){
             if (err) {

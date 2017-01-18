@@ -19,7 +19,7 @@ angular.module('pasaplataMakerApp')
   };
 })
 
-.directive('focusNext', function() {
+.directive('focusNext', function(_) {
   return {
     restrict: 'A',
     link: function($scope, elem, attr) {
@@ -35,7 +35,7 @@ angular.module('pasaplataMakerApp')
       **/
 
       // for buttons on mobile
-      if (elem[0].nodeName.toString() === 'BUTTON') {
+      if (_.toString(elem[0].nodeName) === 'BUTTON') {
         elem.bind('click', function(e) {
           e.preventDefault();
           document.querySelector('#' + _.toString(attr.focusNext)).focus();
@@ -49,20 +49,20 @@ angular.module('pasaplataMakerApp')
         // catch enter
         if (code === 13) {
           e.preventDefault();
-          document.querySelector('#' + attr.focusNext.toString()).focus();
+          document.querySelector('#' + _.toString(attr.focusNext)).focus();
         }
 
         // catch tab as "enter" on input type tel
         if (code === 9 && !e.shiftKey) {
           e.preventDefault();
-          document.querySelector('#' + attr.focusNext.toString()).focus();
+          document.querySelector('#' + _.toString(attr.focusNext)).focus();
         }
       });
     }
   };
 })
 
-.directive('onError', function() {
+.directive('onError', function(_) {
   return {
     restrict: 'AE',
     link: function($scope, elem, attr) {
