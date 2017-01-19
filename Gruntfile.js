@@ -1,5 +1,5 @@
 // Generated on 2017-01-03 using generator-angular 0.14.0
-'use strict';
+'use strict'
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -393,6 +393,11 @@ module.exports = function (grunt) {
           cwd: 'bower_components/bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.',
+          dest: '<%= yeoman.dist %>',
+          src: ['package.json', 'node_modules/**']
         }]
       },
       styles: {
