@@ -1,9 +1,10 @@
 {
   "name": "pasaplatamaker",
   "private": true,
+  "main": "main.js",
+  "version": "0.0.1",
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
-    "elemon": "git+https://github.com/jaime-ez/elemon.git",
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",
     "grunt-concurrent": "^1.0.0",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "electron-is-dev": "^0.1.2",
+    "elemon": "git+https://github.com/jaime-ez/elemon.git",
     "lodash": "^4.17.4",
     "remittance-maker": "git+https://github.com/jaime-ez/remittance-maker.git"
   }
