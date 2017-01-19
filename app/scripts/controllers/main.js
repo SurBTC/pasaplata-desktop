@@ -11,15 +11,15 @@ angular.module('pasaplataMakerApp')
   .controller('MainCtrl', function ($rootScope, $scope, $location, store, getBalances, SURBTC_REST_CLIENT, REMITTANCE_MAKER, _) {
     // make lodash available for templates
     $scope._ = _;
-    
+
     // reset function
     $scope.reset = function () {
       $scope.configure = false;
       $rootScope.maker = null;
       $scope.makerOptions = {
         apiUrl: store.get('apiUrl') || 'https://www.surbtc.com/api/v1',
-        apiKey: store.get('apiKey') || '6942e0c7a9247cd413002edccd77f803',
-        apiSecret: store.get('apiSecret') || 'CXrDlh9iD4SiAU2ztQ1dMrXSUcea/O1/ZcyojteP',
+        apiKey: store.get('apiKey') || '',
+        apiSecret: store.get('apiSecret') || '',
         processorFee: store.get('processorFee') || 0,
         btcInsurance: store.get('apiBtcInsurance') || 0,
         sourceCurrencyDepositFee: store.get('sourceCurrencyDepositFee') || 0,
